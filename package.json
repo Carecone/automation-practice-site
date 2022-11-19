@@ -1,0 +1,22 @@
+{
+  "name": "automation-practice-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carecone/automation-practice-site.git"
+  },
+  "author": "Diego Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carecone/automation-practice-site/issues"
+  },
+  "homepage": "https://github.com/Carecone/automation-practice-site#readme",
+  "dependencies": {
+    "cypress": "^9.1.1"
+  }
+}
