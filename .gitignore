@@ -3,6 +3,8 @@
 
 ### Node ###
 # Logs
+screenshots
+videos
 logs
 *.log
 npm-debug.log*
