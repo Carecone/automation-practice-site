@@ -1,3 +1,6 @@
 {
-    "baseUrl": "https://practice.automationtesting.in/"
+    "baseUrl": "https://practice.automationtesting.in/",
+    "viewportHeight": 766,
+    "viewportWidth": 1280,
+    "chromeWebSecurity": false
 }

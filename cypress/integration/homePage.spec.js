@@ -1,6 +1,6 @@
 describe('Tests Home page', () => {
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/');
     })
 
     it('Home Page - with three Sliders only', () => {
@@ -20,14 +20,17 @@ describe('Tests Home page', () => {
     })
     
     it('Home page - Arrivals-Images-Description', () =>{
-        cy.description('title', 'Thinking in HTML');
+        cy.clickImage('title', 'Thinking in HTML');
+        cy.description();
     })
 
     it('Home page - Arrivals-Images-Reviews', ()=>{
-        cy.review('title', 'Mastering JavaScript');
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.review();
     })
 
     it('Home page - Arrivals-Images-Add to Basket', () =>{
-        cy.addBasket('title', 'Selenium Ruby', '500');
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket('500');
     })
 })
