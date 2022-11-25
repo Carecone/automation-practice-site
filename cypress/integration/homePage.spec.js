@@ -18,19 +18,30 @@ describe('Tests Home page', () => {
     it('Home page - Images in Arrivals should navigate', () => {
         cy.clickImage('title', 'Selenium Ruby');
     })
-    
-    it('Home page - Arrivals-Images-Description', () =>{
+
+    it('Home page - Arrivals-Images-Description', () => {
         cy.clickImage('title', 'Thinking in HTML');
         cy.description();
     })
 
-    it('Home page - Arrivals-Images-Reviews', ()=>{
+    it('Home page - Arrivals-Images-Reviews', () => {
         cy.clickImage('title', 'Selenium Ruby');
         cy.review();
     })
 
-    it('Home page - Arrivals-Images-Add to Basket', () =>{
+    it('Home page - Arrivals-Images-Add to Basket', () => {
         cy.clickImage('title', 'Selenium Ruby');
         cy.addBasket('500');
+    })
+
+    it('Home page - Arrivals-Add to Basket with more books', () => {
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addManyToBasket();
+    })
+
+    it('Home-Arrivals-Add to Basket-Items', () => {
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket('500');
+        cy.addMoreBook(2);
     })
 })
