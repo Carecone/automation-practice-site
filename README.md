@@ -172,7 +172,7 @@ because the coupon is applicable for the book price > 450 rps.
 12) Now click on Item link which navigates to proceed to check out page.
 13) Click on textbox value under quantity in Check out page to add or subtract books.
 14) Now after the above change ‘Update Basket’ button will turn into Clickable mode.
-15) Now click on Update Basket to reflect those changes
+15) Now click on Update Basket to reflect those changes.
 16) User has the feasibility to Update Basket at the time of check out.
 
 ##### Home-Arrivals-Add to Basket-Items-Check-out-Book Final price

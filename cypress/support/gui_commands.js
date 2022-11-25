@@ -45,10 +45,47 @@ Cypress.Commands.add('addManyToBasket', () => {
     });
 });
 
-Cypress.Commands.add('addMoreBook', (qtd) => {
+Cypress.Commands.add('basket', () => {
     cy.contains('.button', 'View Basket').should('be.visible').click();
+})
+
+Cypress.Commands.add('addMoreBook', (qtd) => {
     cy.get('input[type="number"]').type(`{backspace}${qtd}`);
     cy.get('input[name="update_cart"]').should('be.enabled');
 })
 
+Cypress.Commands.add('addCoupon', (coupon) => {
+    cy.get('input[name="coupon_code"]').should('be.visible').type(coupon);
+    cy.get('input[name="apply_coupon"]').should('be.visible').click();
+})
 
+Cypress.Commands.add('validateCoupon', (coupon) => {
+    cy.contains('th', `Coupon: ${coupon}`).should('be.visible');
+})
+
+Cypress.Commands.add('errorCoupon', (error) => {
+    cy.contains('li', error).should('be.visible');
+})
+
+Cypress.Commands.add('removeBook', () => {
+    cy.get('a[class="remove"]').should('be.visible').click();
+    cy.contains('a', 'Undo?').should('be.visible');
+})
+
+Cypress.Commands.add('updateBasket', () => {
+    cy.get('input[name="update_cart"]').click();
+    cy.contains('.woocommerce-message', 'Basket updated.').should('be.visible');
+})
+
+Cypress.Commands.add('price', () => {
+    cy.get('td[class="product-subtotal"]').should('be.visible');
+})
+
+Cypress.Commands.add('totalPrice', () => {
+    cy.get('td[data-title="Total"]').invoke('text').then((total) => {
+        cy.get('td[data-title="Subtotal"]').invoke('text').then((subtotal) => {
+            total = total.replace('\n\t\t\t\t\t\t', '')
+            cy.expect(total).not.be.equals(subtotal);
+        })
+    })
+})

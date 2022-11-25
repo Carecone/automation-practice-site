@@ -42,6 +42,60 @@ describe('Tests Home page', () => {
     it('Home-Arrivals-Add to Basket-Items', () => {
         cy.clickImage('title', 'Selenium Ruby');
         cy.addBasket('500');
+        cy.basket();
         cy.addMoreBook(2);
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Coupon', () => {
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket('500');
+        cy.basket();
+        cy.addCoupon('krishnasakinala')
+        cy.validateCoupon('krishnasakinala');
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Coupon value<450', () => {
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.addCoupon('krishnasakinala')
+        cy.errorCoupon('The minimum spend for this coupon is ₹450.00.')
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Remove book', () => {
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.removeBook();
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Add book', () =>{
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.addMoreBook(10);
+        cy.updateBasket();
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Book Final price', () =>{
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.price();
+    })
+
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Update Basket', () =>{
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.addMoreBook(10);
+        cy.updateBasket();
+    })
+
+    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Total & Sub-total condition', () =>{
+        cy.clickImage('title', 'Mastering JavaScript');
+        cy.addBasket('350');
+        cy.basket();
+        cy.totalPrice();
     })
 })
