@@ -1,3 +1,8 @@
+Website: https://practice.automationtesting.in/
+
+Just clone and run npm install and npm run test
+
+All test cases available on the website were used, as follows:
 # Test Cases
 
 #### HOME PAGE
