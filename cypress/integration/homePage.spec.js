@@ -1,3 +1,5 @@
+const { it } = require("mocha");
+
 describe('Tests Home page', () => {
     beforeEach(() => {
         cy.visit('/');
@@ -69,7 +71,7 @@ describe('Tests Home page', () => {
         cy.removeBook();
     })
 
-    it('Home-Arrivals-Add to Basket-Items-Add book', () =>{
+    it('Home-Arrivals-Add to Basket-Items-Add book', () => {
         cy.clickImage('title', 'Mastering JavaScript');
         cy.addBasket('350');
         cy.basket();
@@ -77,14 +79,14 @@ describe('Tests Home page', () => {
         cy.updateBasket();
     })
 
-    it('Home-Arrivals-Add to Basket-Items-Check-out-Book Final price', () =>{
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Book Final price', () => {
         cy.clickImage('title', 'Mastering JavaScript');
         cy.addBasket('350');
         cy.basket();
         cy.price();
     })
 
-    it('Home-Arrivals-Add to Basket-Items-Check-out-Update Basket', () =>{
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Update Basket', () => {
         cy.clickImage('title', 'Mastering JavaScript');
         cy.addBasket('350');
         cy.basket();
@@ -92,10 +94,12 @@ describe('Tests Home page', () => {
         cy.updateBasket();
     })
 
-    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Total & Sub-total condition', () =>{
+    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Total & Sub-total condition', () => {
         cy.clickImage('title', 'Mastering JavaScript');
         cy.addBasket('350');
         cy.basket();
         cy.totalPrice();
     })
+
+    it('', '')
 })

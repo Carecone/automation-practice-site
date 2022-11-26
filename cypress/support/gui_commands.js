@@ -84,8 +84,13 @@ Cypress.Commands.add('price', () => {
 Cypress.Commands.add('totalPrice', () => {
     cy.get('td[data-title="Total"]').invoke('text').then((total) => {
         cy.get('td[data-title="Subtotal"]').invoke('text').then((subtotal) => {
-            total = total.replace('\n\t\t\t\t\t\t', '')
-            cy.expect(total).not.be.equals(subtotal);
+            total = total.replace(`\n\t\t\t\t\t\t${subtotal}\t\t\t\t\t₹`, '');
+            total = total.replace(' ', '');
+            subtotal = subtotal.replace('₹', '');
+            var DECIMAL = 10;
+            total = parseInt(total, DECIMAL);
+            subtotal = parseInt(subtotal, DECIMAL);
+            cy.expect(total).to.be.greaterThan(subtotal);
         })
     })
 })
