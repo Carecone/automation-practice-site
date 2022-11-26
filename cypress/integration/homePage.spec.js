@@ -1,5 +1,3 @@
-const { it } = require("mocha");
-
 describe('Tests Home page', () => {
     beforeEach(() => {
         cy.visit('/');
@@ -94,12 +92,17 @@ describe('Tests Home page', () => {
         cy.updateBasket();
     })
 
-    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Total & Sub-total condition', () => {
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Total & Sub-total condition', () => {
         cy.clickImage('title', 'Mastering JavaScript');
         cy.addBasket('350');
         cy.basket();
         cy.totalPrice();
     })
 
-    it('', '')
+    it.only('Home-Arrivals-Add to Basket-Items-Check-out functionality', () =>{
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket('500');
+        cy.basket();
+        cy.checkout();
+    })
 })

@@ -94,3 +94,7 @@ Cypress.Commands.add('totalPrice', () => {
         })
     })
 })
+
+Cypress.Commands.add('checkout', () => {
+    cy.contains('a', ' Proceed to Checkout').should('be.visible').click();
+})   
