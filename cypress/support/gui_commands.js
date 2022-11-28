@@ -97,4 +97,20 @@ Cypress.Commands.add('totalPrice', () => {
 
 Cypress.Commands.add('checkout', () => {
     cy.contains('a', ' Proceed to Checkout').should('be.visible').click();
-})   
+})
+
+Cypress.Commands.add('fillForm', (name, secondName, company, email, phone, country, address, city, state, zip) => {
+    cy.get('input[name="billing_first_name"]').should('be.visible').type(name);
+    cy.get('input[name="billing_last_name"]').should('be.visible').type(secondName);
+    cy.get('input[name="billing_company"]').should('be.visible').type(company);
+    cy.get('input[name="billing_email"]').should('be.visible').type(email);
+    cy.get('input[name="billing_phone"]').should('be.visible').type(phone);
+    cy.contains('span', 'India').should('be.visible').should('be.visible').type(country); 
+    cy.contains('span', country).should('be.visible').click();
+    cy.get('input[name="billing_address_1"]').should('be.visible').type(address);
+    cy.get('input[name="billing_city"]').should('be.visible').type(city);
+    cy.contains('span', 'Select an option…').should('be.visible').click();
+    cy.get('#s2id_autogen2_search').type(state);
+    cy.contains('span', state).should('be.visible').click();
+    cy.get('input[name="billing_postcode"]').should('be.visible').type(zip);
+})

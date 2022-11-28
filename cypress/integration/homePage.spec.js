@@ -99,10 +99,18 @@ describe('Tests Home page', () => {
         cy.totalPrice();
     })
 
-    it.only('Home-Arrivals-Add to Basket-Items-Check-out functionality', () =>{
+    it('Home-Arrivals-Add to Basket-Items-Check-out functionality', () =>{
         cy.clickImage('title', 'Selenium Ruby');
         cy.addBasket('500');
         cy.basket();
         cy.checkout();
+    })
+
+    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Payment Gateway', () =>{
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket('500');
+        cy.basket();
+        cy.checkout();
+        cy.fillForm('Diego','Souza','fmx', 'a@gmail.com','40028922', 'Brazil', 'Rangel pestana', 'Araçatex', 'São Paulo', '16050270');
     })
 })
