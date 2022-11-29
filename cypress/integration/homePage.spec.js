@@ -161,7 +161,7 @@ describe('Tests Home page', () => {
         cy.fillForm('Diego','Souza','fmx', 'a@gmail.com','40028922', 'Brazil', 'Rangel pestana', 'Araçatex', 'São Paulo', '16050270');
     })
 
-    it.only('Home-Arrivals-Add to Basket-Items-Check-out-Payment Gateway-Place order' , () =>{
+    it('Home-Arrivals-Add to Basket-Items-Check-out-Payment Gateway-Place order' , () =>{
         cy.clickImage('title', 'Selenium Ruby');
         cy.addBasket(500)
         cy.basket();
