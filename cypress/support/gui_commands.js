@@ -11,8 +11,6 @@ Cypress.Commands.add('countElement', (element, qtd) => {
 });
 
 Cypress.Commands.add('clickImage', (type, text) => {
-    cy.contains('a', 'Shop').should('be.visible').click();
-    cy.contains('a', 'Home').should('be.visible').click();
     cy.get(`img[${type}="${text}"]`).should('be.visible').click();
     cy.contains('h1', text).should('be.visible');
 });
@@ -97,6 +95,13 @@ Cypress.Commands.add('totalPrice', () => {
 
 Cypress.Commands.add('checkout', () => {
     cy.contains('a', ' Proceed to Checkout').should('be.visible').click();
+    cy.contains('h3', 'Billing Details').should('be.visible');
+    cy.contains('h3', 'Additional Information').should('be.visible');
+    cy.contains('h3', 'Your order').should('be.visible');
+    cy.get('li[class="wc_payment_method payment_method_bacs"').should('be.visible');
+    cy.get('li[class="wc_payment_method payment_method_cheque"]').should('be.visible');
+    cy.get('li[class="wc_payment_method payment_method_cod"]').should('be.visible');
+    cy.get('li[class="wc_payment_method payment_method_ppec_paypal"]').should('be.visible');
 })
 
 Cypress.Commands.add('fillForm', (name, secondName, company, email, phone, country, address, city, state, zip) => {
@@ -105,7 +110,7 @@ Cypress.Commands.add('fillForm', (name, secondName, company, email, phone, count
     cy.get('input[name="billing_company"]').should('be.visible').type(company);
     cy.get('input[name="billing_email"]').should('be.visible').type(email);
     cy.get('input[name="billing_phone"]').should('be.visible').type(phone);
-    cy.contains('span', 'India').should('be.visible').should('be.visible').type(country); 
+    cy.contains('span', 'India').should('be.visible').should('be.visible').type(country);
     cy.contains('span', country).should('be.visible').click();
     cy.get('input[name="billing_address_1"]').should('be.visible').type(address);
     cy.get('input[name="billing_city"]').should('be.visible').type(city);
@@ -113,4 +118,14 @@ Cypress.Commands.add('fillForm', (name, secondName, company, email, phone, count
     cy.get('#s2id_autogen2_search').type(state);
     cy.contains('span', state).should('be.visible').click();
     cy.get('input[name="billing_postcode"]').should('be.visible').type(zip);
+})
+
+Cypress.Commands.add('placeOrder', () => {
+    cy.get('input[name="woocommerce_checkout_place_order"]').should('be.visible').click();
+})
+
+Cypress.Commands.add('confirmOrder', () => {
+    cy.contains('p', 'Thank you. Your order has been received.').should('be.visible');
+    cy.contains('h2', 'Our Bank Details').should('be.visible');
+    cy.contains('h2', 'Order Details').should('be.visible');
 })
