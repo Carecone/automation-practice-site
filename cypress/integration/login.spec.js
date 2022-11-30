@@ -4,6 +4,6 @@ describe('Tests Login', () => {
     })
 
     it('Login with valid username and password.', () =>{
-
+        cy.myAccount();
     })
 })

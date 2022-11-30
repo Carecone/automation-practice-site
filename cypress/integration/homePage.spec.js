@@ -172,3 +172,11 @@ describe('Tests Home page', () => {
         cy.confirmOrder();
     })
 })
+
+Cypress.Commands.add('myAccount', () =>{
+    cy.contains('a', 'My Account').should('be.visible').click();
+})
+
+Cypress.Commands.add('login', () =>{
+    
+})
