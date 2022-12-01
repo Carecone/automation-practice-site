@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Carecone/automation-practice-site#readme",
   "dependencies": {
     "cypress": "^9.1.1"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
   }
 }

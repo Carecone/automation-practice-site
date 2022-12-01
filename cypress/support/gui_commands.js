@@ -149,5 +149,5 @@ Cypress.Commands.add('loginFail', (email, password) => {
 })
 
 Cypress.Commands.add('passwordMasked', (password) => {
-    cy.get('input[id="password"]').type(password).should({ sensitive: true })
+    cy.get('input[id="password"]').type(password).should('have.attr', 'type', 'password')
 })
