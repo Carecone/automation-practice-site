@@ -35,7 +35,7 @@ Cypress.Commands.add('addManyToBasket', () => {
         value = value.replace(' in stock', '');
         var DECIMAL = 10
         var qtd = parseInt(value, DECIMAL) + parseInt(1, DECIMAL);
-        cy.get('input[type="number"]').type(`{backspace}${qtd}`);
+        cy.get('input[type="number"]').clear().type(qtd);
         cy.get('.single_add_to_cart_button').should('be.visible').click();
         cy.get('.qty:invalid')
             .invoke('prop', 'validationMessage')
@@ -48,7 +48,7 @@ Cypress.Commands.add('basket', () => {
 })
 
 Cypress.Commands.add('addMoreBook', (qtd) => {
-    cy.get('input[type="number"]').type(`{backspace}${qtd}`);
+    cy.get('input[type="number"]').clear().type(qtd);
     cy.get('input[name="update_cart"]').should('be.enabled');
 })
 
@@ -128,4 +128,26 @@ Cypress.Commands.add('confirmOrder', () => {
     cy.contains('p', 'Thank you. Your order has been received.').should('be.visible');
     cy.contains('h2', 'Our Bank Details').should('be.visible');
     cy.contains('h2', 'Order Details').should('be.visible');
+})
+
+Cypress.Commands.add('myAccount', () => {
+    cy.contains('a', 'My Account').should('be.visible').click();
+})
+
+Cypress.Commands.add('loginSuccess', (email, password) => {
+    cy.get('input[id="username"]').should('be.visible').type(email);
+    cy.get('input[id="password"]').should('be.visible').type(password);
+    cy.get('input[name="login"]').should('be.visible').click();
+    cy.contains('a', 'Sign out').should('be.visible');
+})
+
+Cypress.Commands.add('loginFail', (email, password) => {
+    cy.get('input[id="username"]').should('be.visible').type(email);
+    cy.get('input[id="password"]').should('be.visible').type(password);
+    cy.get('input[name="login"]').should('be.visible').click();
+    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+})
+
+Cypress.Commands.add('passwordMasked', (password) => {
+    cy.get('input[id="password"]').type(password).should({ sensitive: true })
 })
