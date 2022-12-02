@@ -28,14 +28,18 @@ describe('Tests Login', () => {
         cy.loginFail(' ', ' ');
     })
 
-    it.only('Login -Password should be masked.', () =>{
+    it('Login -Password should be masked.', () =>{
         cy.myAccount();
         cy.passwordMasked('123456');
     })
     it('Login-Handles case sensitive.', () =>{
-
+        cy.myAccount();
+        cy.loginFail('TESTINGLOGIN@gmail.com', 'ZxKy12345');
     })
-    it('Login-Authentication', () =>{
 
+    it('Login-Authentication', () =>{
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.signOut();
     })
 })

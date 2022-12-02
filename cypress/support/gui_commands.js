@@ -151,3 +151,8 @@ Cypress.Commands.add('loginFail', (email, password) => {
 Cypress.Commands.add('passwordMasked', (password) => {
     cy.get('input[id="password"]').type(password).should('have.attr', 'type', 'password')
 })
+
+Cypress.Commands.add('signOut', () =>{
+    cy.contains('a', 'Sign out').click();
+    cy.contains('h2', 'Login').should('be.visible');
+})
