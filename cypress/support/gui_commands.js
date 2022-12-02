@@ -152,7 +152,56 @@ Cypress.Commands.add('passwordMasked', (password) => {
     cy.get('input[id="password"]').type(password).should('have.attr', 'type', 'password')
 })
 
-Cypress.Commands.add('signOut', () =>{
+Cypress.Commands.add('signOut', () => {
     cy.contains('a', 'Sign out').click();
     cy.contains('h2', 'Login').should('be.visible');
 })
+
+Cypress.Commands.add('registrationSucess', (email, password) => {
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.contains('a', 'Sign out').should('be.visible');
+})
+
+Cypress.Commands.add('registrationFail', (email, password) =>{
+    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+})
+
+Cypress.Commands.add('registrationEmailFail', (email, password) =>{
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.get('#reg_email:invalid')
+    .invoke('prop', 'validationMessage')
+    .should('equal', `Inclua um "@" no endereço de email. "${email}" não contém um "@".`)
+})
+
+Cypress.Commands.add('registrationEmptyEmail', (email, password) =>{
+    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+})
+
+Cypress.Commands.add('registrationEmptyPassword', (email) =>{
+    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+})
+
+Cypress.Commands.add('registrationEmptyEmailPassword', () =>{
+    cy.get('input[value="Register"]').should('be.visible').click();
+    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+})
+
+
+
+
