@@ -158,55 +158,68 @@ Cypress.Commands.add('signOut', () => {
 })
 
 Cypress.Commands.add('registrationSucess', (email, password) => {
-    cy.get('input[id="reg_email"]').should('be.visible').type(email, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.contains('a', 'Sign out').should('be.visible');
 })
 
-Cypress.Commands.add('registrationFail', (email, password) =>{
-    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+Cypress.Commands.add('registrationFail', (email, password) => {
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.get('ul[class="woocommerce-error"]').should('be.visible');
 })
 
-Cypress.Commands.add('registrationEmailFail', (email, password) =>{
-    cy.get('input[id="reg_email"]').should('be.visible').type(email, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+Cypress.Commands.add('registrationEmailFail', (email, password) => {
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.get('#reg_email:invalid')
-    .invoke('prop', 'validationMessage')
-    .should('equal', `Inclua um "@" no endereço de email. "${email}" não contém um "@".`)
+        .invoke('prop', 'validationMessage')
+        .should('equal', `Inclua um "@" no endereço de email. "${email}" não contém um "@".`)
 })
 
-Cypress.Commands.add('registrationEmptyEmail', (email, password) =>{
-    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
-    cy.get('input[id="reg_password"]').should('be.visible').type(password, {delay: 100});
+Cypress.Commands.add('registrationEmptyEmail', (email, password) => {
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
+    cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.get('ul[class="woocommerce-error"]').should('be.visible');
 })
 
-Cypress.Commands.add('registrationEmptyPassword', (email) =>{
-    cy.get('input[id="reg_email"]').should('be.visible').type(email,{delay: 100});
+Cypress.Commands.add('registrationEmptyPassword', (email) => {
+    cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.get('ul[class="woocommerce-error"]').should('be.visible');
 })
 
-Cypress.Commands.add('registrationEmptyEmailPassword', () =>{
+Cypress.Commands.add('registrationEmptyEmailPassword', () => {
     cy.get('input[value="Register"]').should('be.visible').click();
     cy.get('ul[class="woocommerce-error"]').should('be.visible');
 })
 
-Cypress.Commands.add('adjusterFilter', () =>{
+Cypress.Commands.add('adjusterFilter', () => {
     cy.get('span[style="left: 100%;"]').click().type(`{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}`)
     cy.contains('span', '₹150').should('be.visible');
     cy.contains('span', '₹450').should('be.visible');
+    cy.contains('button', 'Filter').should('be.visible').click();
+    cy.contains('span', '₹150').should('be.visible');
+    cy.contains('span', '₹450').should('be.visible');
+})
+
+Cypress.Commands.add('sorting', (sorting) => {
+    cy.get('select[name="orderby"]').should('be.visible').select(sorting);
+    cy.contains('option', sorting).should('have.attr', 'selected', 'selected');
+})
+
+Cypress.Commands.add('readMore', (book) => {
+    cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"]`, 'Read more').should('be.visible').click();
+    cy.contains('p', 'Out of stock').should('be.visible');
 })
