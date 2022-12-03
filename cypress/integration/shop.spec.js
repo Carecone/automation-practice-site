@@ -3,7 +3,55 @@ describe('Tests Shop', () => {
         cy.visit('/');
     })
 
-    it('Shop-Filter By Price Functionality.', () => {
+    it.only('Shop-Filter By Price Functionality.', () => {
+        cy.shopMenuButton();
+        cy.adjusterFilter();
+    })
+
+    it('', () => {
 
     })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    it('', () => {
+
+    })
+    
+    
+    
 })

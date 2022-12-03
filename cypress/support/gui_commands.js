@@ -202,6 +202,11 @@ Cypress.Commands.add('registrationEmptyEmailPassword', () =>{
     cy.get('ul[class="woocommerce-error"]').should('be.visible');
 })
 
-
-
-
+Cypress.Commands.add('adjusterFilter', () =>{
+    cy.get('span[style="left: 100%;"]').click().type(`{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
+    {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
+    {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
+    {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}`)
+    cy.contains('span', '₹150').should('be.visible');
+    cy.contains('span', '₹450').should('be.visible');
+})
