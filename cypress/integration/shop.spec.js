@@ -58,7 +58,4 @@ describe('Tests Shop', () => {
     it('Shop-Add to Basket-View Basket-Tax Functionality.', () => {
 
     })
-    
-    
-    
 })
