@@ -43,8 +43,9 @@ describe('Tests Shop', () => {
         cy.readMore('functional-programming-in-js');
     })
     
-    it('Shop-Sale Functionality.', () => {
-
+    it.only('Shop-Sale Functionality.', () => {
+        cy.shopMenuButton();
+        cy.onSale('android-quick-start-guide', '₹600.00', '₹450.00');
     })
     
     it('Shop-Add to Basket-View Basket Functionality.', () => {

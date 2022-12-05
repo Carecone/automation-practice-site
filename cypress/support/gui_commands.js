@@ -223,3 +223,9 @@ Cypress.Commands.add('readMore', (book) => {
     cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"]`, 'Read more').should('be.visible').click();
     cy.contains('p', 'Out of stock').should('be.visible');
 })
+
+Cypress.Commands.add('onSale', (book, del, ins) =>{
+    cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale`).should('be.visible');
+    cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"] > .price > del > .woocommerce-Price-amount`, del);
+    cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"] > .price > ins > .woocommerce-Price-amount`, ins);
+})
