@@ -43,17 +43,31 @@ describe('Tests Shop', () => {
         cy.readMore('functional-programming-in-js');
     })
     
-    it.only('Shop-Sale Functionality.', () => {
+    it('Shop-Sale Functionality.', () => {
         cy.shopMenuButton();
         cy.onSale('android-quick-start-guide', '₹600.00', '₹450.00');
     })
     
     it('Shop-Add to Basket-View Basket Functionality.', () => {
-
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket(500)
+        cy.basket();
+        cy.totalPrice();
+        cy.checkout();
+        cy.fillForm('Diego','Souza','fmx', 'a@gmail.com','40028922', 'Brazil', 'Rangel pestana', 'Araçatex', 'São Paulo', '16050270');
+        cy.placeOrder();
+        cy.confirmOrder();
     })
     
     it('Shop-Add to Basket-View Basket through Item link.', () => {
-
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket(500)
+        cy.basketLink();
+        cy.totalPrice();
+        cy.checkout();
+        cy.fillForm('Diego','Souza','fmx', 'a@gmail.com','40028922', 'Brazil', 'Rangel pestana', 'Araçatex', 'São Paulo', '16050270');
+        cy.placeOrder();
+        cy.confirmOrder();
     })
     
     it('Shop-Add to Basket-View Basket-Tax Functionality.', () => {

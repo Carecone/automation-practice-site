@@ -47,6 +47,10 @@ Cypress.Commands.add('basket', () => {
     cy.contains('.button', 'View Basket').should('be.visible').click();
 })
 
+Cypress.Commands.add('basketLink', () =>{
+    cy.get('.wpmenucart-contents').should('be.visible').click();
+})
+
 Cypress.Commands.add('addMoreBook', (qtd) => {
     cy.get('input[type="number"]').clear().type(qtd);
     cy.get('input[name="update_cart"]').should('be.enabled');
