@@ -364,7 +364,7 @@ because the coupon is applicable for the book price > 450 rps.
 #### MY ACCOUNT - REGISTRATION
 
 ##### Registration-Sign-in.
-1) Open the browser
+1) Open the browser.
 2) Enter the URL “http://practice.automationtesting.in/”.
 3) Click on My Account Menu.
 4) Enter registered Email Address in Email-Address textbox.
