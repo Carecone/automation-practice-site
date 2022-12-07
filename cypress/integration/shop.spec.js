@@ -45,7 +45,7 @@ describe('Tests Shop', () => {
     
     it('Shop-Sale Functionality.', () => {
         cy.shopMenuButton();
-        cy.onSale('android-quick-start-guide', '₹600.00', '₹450.00');
+        cy.onSale('android-quick-start-guide');
     })
     
     it('Shop-Add to Basket-View Basket Functionality.', () => {
@@ -71,6 +71,11 @@ describe('Tests Shop', () => {
     })
     
     it('Shop-Add to Basket-View Basket-Tax Functionality.', () => {
-
+        cy.clickImage('title', 'Selenium Ruby');
+        cy.addBasket(500)
+        cy.basketLink();
+        cy.totalPrice();
+        cy.checkout();
+        cy.validTax('Brazil', '25.00');
     })
 })

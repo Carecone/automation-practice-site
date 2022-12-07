@@ -228,8 +228,14 @@ Cypress.Commands.add('readMore', (book) => {
     cy.contains('p', 'Out of stock').should('be.visible');
 })
 
-Cypress.Commands.add('onSale', (book, del, ins) =>{
-    cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale`).should('be.visible');
-    cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"] > .price > del > .woocommerce-Price-amount`, del);
-    cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"] > .price > ins > .woocommerce-Price-amount`, ins);
+Cypress.Commands.add('onSale', (book) =>{
+    cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale ~ .price > del > .woocommerce-Price-amount`);
+    cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale ~ .price > ins > .woocommerce-Price-amount`);
+})
+
+Cypress.Commands.add('validTax', (country, tax) =>{
+    cy.contains('.tax-rate > td ', '10.00').should('be.visible');
+    cy.contains('span', 'India').should('be.visible').should('be.visible').type(country);
+    cy.contains('span', country).should('be.visible').click();
+    cy.contains('.tax-rate > td ', tax).should('be.visible');
 })
