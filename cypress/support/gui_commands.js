@@ -7,17 +7,17 @@ Cypress.Commands.add('homeButton', () => {
 });
 
 Cypress.Commands.add('countElement', (element, qtd) => {
-    cy.get(element).should('have.length', qtd).should('be.visible');
+    cy.get(element).should('have.length', qtd);
 });
 
 Cypress.Commands.add('clickImage', (type, text) => {
     cy.get(`img[${type}="${text}"]`).should('be.visible').click();
-    cy.contains('h1', text).should('be.visible');
+    cy.contains('h1', text);
 });
 
 Cypress.Commands.add('description', () => {
     cy.contains('a', 'Description').click()
-    cy.contains('h2', 'Product Description').should('be.visible');
+    cy.contains('h2', 'Product Description');
 });
 
 Cypress.Commands.add('review', () => {
@@ -62,25 +62,25 @@ Cypress.Commands.add('addCoupon', (coupon) => {
 })
 
 Cypress.Commands.add('validateCoupon', (coupon) => {
-    cy.contains('th', `Coupon: ${coupon}`).should('be.visible');
+    cy.contains('th', `Coupon: ${coupon}`);
 })
 
 Cypress.Commands.add('errorCoupon', (error) => {
-    cy.contains('li', error).should('be.visible');
+    cy.contains('li', error);
 })
 
 Cypress.Commands.add('removeBook', () => {
     cy.get('a[class="remove"]').should('be.visible').click();
-    cy.contains('a', 'Undo?').should('be.visible');
+    cy.contains('a', 'Undo?');
 })
 
 Cypress.Commands.add('updateBasket', () => {
     cy.get('input[name="update_cart"]').click();
-    cy.contains('.woocommerce-message', 'Basket updated.').should('be.visible');
+    cy.contains('.woocommerce-message', 'Basket updated.');
 })
 
 Cypress.Commands.add('price', () => {
-    cy.get('td[class="product-subtotal"]').should('be.visible');
+    cy.get('td[class="product-subtotal"]');
 })
 
 Cypress.Commands.add('totalPrice', () => {
@@ -99,13 +99,13 @@ Cypress.Commands.add('totalPrice', () => {
 
 Cypress.Commands.add('checkout', () => {
     cy.contains('a', ' Proceed to Checkout').should('be.visible').click();
-    cy.contains('h3', 'Billing Details').should('be.visible');
-    cy.contains('h3', 'Additional Information').should('be.visible');
-    cy.contains('h3', 'Your order').should('be.visible');
-    cy.get('li[class="wc_payment_method payment_method_bacs"').should('be.visible');
-    cy.get('li[class="wc_payment_method payment_method_cheque"]').should('be.visible');
-    cy.get('li[class="wc_payment_method payment_method_cod"]').should('be.visible');
-    cy.get('li[class="wc_payment_method payment_method_ppec_paypal"]').should('be.visible');
+    cy.contains('h3', 'Billing Details');
+    cy.contains('h3', 'Additional Information');
+    cy.contains('h3', 'Your order');
+    cy.get('li[class="wc_payment_method payment_method_bacs"');
+    cy.get('li[class="wc_payment_method payment_method_cheque"]');
+    cy.get('li[class="wc_payment_method payment_method_cod"]');
+    cy.get('li[class="wc_payment_method payment_method_ppec_paypal"]');
 })
 
 Cypress.Commands.add('fillForm', (name, secondName, company, email, phone, country, address, city, state, zip) => {
@@ -129,9 +129,9 @@ Cypress.Commands.add('placeOrder', () => {
 })
 
 Cypress.Commands.add('confirmOrder', () => {
-    cy.contains('p', 'Thank you. Your order has been received.').should('be.visible');
-    cy.contains('h2', 'Our Bank Details').should('be.visible');
-    cy.contains('h2', 'Order Details').should('be.visible');
+    cy.contains('p', 'Thank you. Your order has been received.');
+    cy.contains('h2', 'Our Bank Details');
+    cy.contains('h2', 'Order Details');
 })
 
 Cypress.Commands.add('myAccount', () => {
@@ -142,14 +142,14 @@ Cypress.Commands.add('loginSuccess', (email, password) => {
     cy.get('input[id="username"]').should('be.visible').type(email);
     cy.get('input[id="password"]').should('be.visible').type(password);
     cy.get('input[name="login"]').should('be.visible').click();
-    cy.contains('a', 'Sign out').should('be.visible');
+    cy.contains('a', 'Sign out');
 })
 
 Cypress.Commands.add('loginFail', (email, password) => {
     cy.get('input[id="username"]').should('be.visible').type(email);
     cy.get('input[id="password"]').should('be.visible').type(password);
     cy.get('input[name="login"]').should('be.visible').click();
-    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+    cy.get('ul[class="woocommerce-error"]');
 })
 
 Cypress.Commands.add('passwordMasked', (password) => {
@@ -158,7 +158,7 @@ Cypress.Commands.add('passwordMasked', (password) => {
 
 Cypress.Commands.add('signOut', () => {
     cy.contains('a', 'Sign out').click();
-    cy.contains('h2', 'Login').should('be.visible');
+    cy.contains('h2', 'Login');
 })
 
 Cypress.Commands.add('registrationSucess', (email, password) => {
@@ -166,7 +166,7 @@ Cypress.Commands.add('registrationSucess', (email, password) => {
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
-    cy.contains('a', 'Sign out').should('be.visible');
+    cy.contains('a', 'Sign out');
 })
 
 Cypress.Commands.add('registrationFail', (email, password) => {
@@ -174,7 +174,7 @@ Cypress.Commands.add('registrationFail', (email, password) => {
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
-    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+    cy.get('ul[class="woocommerce-error"]');
 })
 
 Cypress.Commands.add('registrationEmailFail', (email, password) => {
@@ -192,18 +192,18 @@ Cypress.Commands.add('registrationEmptyEmail', (email, password) => {
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[id="reg_password"]').should('be.visible').type(password, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
-    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+    cy.get('ul[class="woocommerce-error"]');
 })
 
 Cypress.Commands.add('registrationEmptyPassword', (email) => {
     cy.get('input[id="reg_email"]').should('be.visible').type(email, { delay: 100 });
     cy.get('input[value="Register"]').should('be.visible').click();
-    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+    cy.get('ul[class="woocommerce-error"]');
 })
 
 Cypress.Commands.add('registrationEmptyEmailPassword', () => {
     cy.get('input[value="Register"]').should('be.visible').click();
-    cy.get('ul[class="woocommerce-error"]').should('be.visible');
+    cy.get('ul[class="woocommerce-error"]');
 })
 
 Cypress.Commands.add('adjusterFilter', () => {
@@ -211,11 +211,11 @@ Cypress.Commands.add('adjusterFilter', () => {
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}
     {leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}`)
-    cy.contains('span', '₹150').should('be.visible');
-    cy.contains('span', '₹450').should('be.visible');
+    cy.contains('span', '₹150');
+    cy.contains('span', '₹450');
     cy.contains('button', 'Filter').should('be.visible').click();
-    cy.contains('span', '₹150').should('be.visible');
-    cy.contains('span', '₹450').should('be.visible');
+    cy.contains('span', '₹150');
+    cy.contains('span', '₹450');
 })
 
 Cypress.Commands.add('sorting', (sorting) => {
@@ -225,7 +225,7 @@ Cypress.Commands.add('sorting', (sorting) => {
 
 Cypress.Commands.add('readMore', (book) => {
     cy.contains(`a[href="https://practice.automationtesting.in/product/${book}/"]`, 'Read more').should('be.visible').click();
-    cy.contains('p', 'Out of stock').should('be.visible');
+    cy.contains('p', 'Out of stock');
 })
 
 Cypress.Commands.add('onSale', (book) => {
@@ -234,10 +234,10 @@ Cypress.Commands.add('onSale', (book) => {
 })
 
 Cypress.Commands.add('validTax', (country, tax) => {
-    cy.contains('.tax-rate > td ', '10.00').should('be.visible');
-    cy.contains('span', 'India').should('be.visible').should('be.visible').type(country);
+    cy.contains('.tax-rate > td ', '10.00');
+    cy.contains('span', 'India').should('be.visible').type(country);
     cy.contains('span', country).should('be.visible').click();
-    cy.contains('.tax-rate > td ', tax).should('be.visible');
+    cy.contains('.tax-rate > td ', tax);
 })
 
 Cypress.Commands.add('viewDashboard', () => {
@@ -246,10 +246,10 @@ Cypress.Commands.add('viewDashboard', () => {
 
 Cypress.Commands.add('viewOrders', () => {
     cy.contains('a', 'Orders').should('be.visible').click();
-    cy.get('th[class="order-number"]').should('be.visible');
+    cy.get('th[class="order-number"]');
 })
 
 Cypress.Commands.add('openOrder', (order) =>{
     cy.contains(`a[href="https://practice.automationtesting.in/my-account/view-order/${order}"]`, 'View').click();
-    cy.contains('h2', 'Order Details').should('be.visible');
+    cy.contains('h2', 'Order Details');
 })
