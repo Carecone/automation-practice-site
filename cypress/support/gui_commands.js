@@ -47,7 +47,7 @@ Cypress.Commands.add('basket', () => {
     cy.contains('.button', 'View Basket').should('be.visible').click();
 })
 
-Cypress.Commands.add('basketLink', () =>{
+Cypress.Commands.add('basketLink', () => {
     cy.get('.wpmenucart-contents').should('be.visible').click();
 })
 
@@ -228,14 +228,28 @@ Cypress.Commands.add('readMore', (book) => {
     cy.contains('p', 'Out of stock').should('be.visible');
 })
 
-Cypress.Commands.add('onSale', (book) =>{
+Cypress.Commands.add('onSale', (book) => {
     cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale ~ .price > del > .woocommerce-Price-amount`);
     cy.get(`a[href="https://practice.automationtesting.in/product/${book}/"] > .onsale ~ .price > ins > .woocommerce-Price-amount`);
 })
 
-Cypress.Commands.add('validTax', (country, tax) =>{
+Cypress.Commands.add('validTax', (country, tax) => {
     cy.contains('.tax-rate > td ', '10.00').should('be.visible');
     cy.contains('span', 'India').should('be.visible').should('be.visible').type(country);
     cy.contains('span', country).should('be.visible').click();
     cy.contains('.tax-rate > td ', tax).should('be.visible');
+})
+
+Cypress.Commands.add('viewDashboard', () => {
+    cy.contains('p', 'From your account dashboard you can view your recent orders, manage your shipping and billing addresses and edit your password and account details.')
+})
+
+Cypress.Commands.add('viewOrders', () => {
+    cy.contains('a', 'Orders').should('be.visible').click();
+    cy.get('th[class="order-number"]').should('be.visible');
+})
+
+Cypress.Commands.add('openOrder', (order) =>{
+    cy.contains(`a[href="https://practice.automationtesting.in/my-account/view-order/${order}"]`, 'View').click();
+    cy.contains('h2', 'Order Details').should('be.visible');
 })

@@ -3,16 +3,26 @@ describe('Tests My account', () =>{
         cy.visit('/');
     })
 
-    it('My Accounts-Dashboard.', () =>{
-        
+    it.only('My Accounts-Dashboard.', () =>{
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.myAccount();
+        cy.viewDashboard();
     })
 
-    it('My Accounts-Orders.', () =>{
-
+    it.only('My Accounts-Orders.', () =>{
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.myAccount();
+        cy.viewOrders();
     })
 
-    it('My Accounts-Orders.', () =>{
-
+    it.only('My Accounts-Orders.', () =>{
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.myAccount();
+        cy.viewOrders();
+        cy.openOrder('15066');
     })
 
     it('My Accounts-Orders.', () =>{
