@@ -253,3 +253,9 @@ Cypress.Commands.add('openOrder', (order) =>{
     cy.contains(`a[href="https://practice.automationtesting.in/my-account/view-order/${order}"]`, 'View').click();
     cy.contains('h2', 'Order Details');
 })
+
+Cypress.Commands.add('orderValidate', () =>{
+    cy.get('.order-number').should('have.value');
+    cy.get('.order-date').should('have.value');
+    cy.get('.order-status').should('have.value');
+})

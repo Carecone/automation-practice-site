@@ -3,18 +3,26 @@ describe('Tests My account', () =>{
         cy.visit('/');
     })
 
-    it.only('My Accounts-Dashboard.', () =>{
+    it('My Accounts-Dashboard.', () =>{
         cy.myAccount();
         cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
         cy.myAccount();
         cy.viewDashboard();
     })
 
-    it.only('My Accounts-Orders.', () =>{
+    it('My Accounts-Orders.', () =>{
         cy.myAccount();
         cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
         cy.myAccount();
         cy.viewOrders();
+    })
+
+    it('My Accounts-Orders.', () =>{
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.myAccount();
+        cy.viewOrders();
+        cy.openOrder('15066');
     })
 
     it.only('My Accounts-Orders.', () =>{
@@ -23,10 +31,7 @@ describe('Tests My account', () =>{
         cy.myAccount();
         cy.viewOrders();
         cy.openOrder('15066');
-    })
-
-    it('My Accounts-Orders.', () =>{
-
+        cy.orderValidate();
     })
 
     it('My Accounts-Address Functionality.', () =>{
