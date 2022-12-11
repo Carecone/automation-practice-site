@@ -259,3 +259,8 @@ Cypress.Commands.add('orderValidate', () =>{
     cy.get('.order-date').should('have.value');
     cy.get('.order-status').should('have.value');
 })
+
+Cypress.Commands.add('openAddresses', () => {
+    cy.contains('a', 'Addresses').click();
+    cy.contains('h3', 'Billing Address').should('be.visible');
+})

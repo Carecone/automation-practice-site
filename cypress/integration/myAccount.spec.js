@@ -35,7 +35,10 @@ describe('Tests My account', () =>{
     })
 
     it('My Accounts-Address Functionality.', () =>{
-
+        cy.myAccount();
+        cy.loginSuccess('testinglogin@gmail.com', 'Zxky12345*');
+        cy.myAccount();
+        cy.openAddresses();
     })
 
     it('My Accounts-Address Functionality.', () =>{
