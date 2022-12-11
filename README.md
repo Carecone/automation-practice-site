@@ -1,6 +1,9 @@
 Website: https://practice.automationtesting.in/
 
-### Instalação e execução
+## the focus of this automation is to act 100% in UI tests, in order to practice and better understand how cypress works in e2e tests
+
+
+### install and run
 ```bash
 npm install
 
